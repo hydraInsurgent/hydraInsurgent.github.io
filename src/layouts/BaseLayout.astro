@@ -1,0 +1,70 @@
+---
+// BaseLayout - the shared HTML shell for every page on the site.
+// Accepts a title prop to set the <title> tag per page.
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Manu Dubey — writing, projects, and thinking.' } = Astro.props;
+
+// Canonical URL for this page
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+
+    <!-- Canonical URL - tells search engines the preferred URL for this page -->
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Favicon placeholder - replace public/favicon.svg with a real one later -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <title>{title} — Manu Dubey</title>
+
+    <!-- Global styles (Tailwind + base resets) -->
+    <link rel="stylesheet" href="/src/styles/global.css" />
+  </head>
+
+  <body class="min-h-screen flex flex-col">
+    <!-- Navigation bar -->
+    <header class="border-b border-gray-100">
+      <nav class="max-w-2xl mx-auto px-4 py-4 flex items-center justify-between">
+        <!-- Site name / home link -->
+        <a href="/" class="font-medium text-ink hover:text-gray-500 transition-colors">
+          Manu Dubey
+        </a>
+
+        <!-- Section links -->
+        <ul class="flex items-center gap-6 text-sm">
+          <li>
+            <a href="/tech" class="text-gray-500 hover:text-ink transition-colors">Tech</a>
+          </li>
+          <li>
+            <a href="/blog" class="text-gray-500 hover:text-ink transition-colors">Blog</a>
+          </li>
+          <li>
+            <a href="/projects" class="text-gray-500 hover:text-ink transition-colors">Projects</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Main content - each page fills this slot -->
+    <main class="flex-1 max-w-2xl mx-auto px-4 py-12 w-full">
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-100">
+      <div class="max-w-2xl mx-auto px-4 py-6 text-sm text-gray-400">
+        Manu Dubey
+      </div>
+    </footer>
+  </body>
+</html>

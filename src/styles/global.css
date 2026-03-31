@@ -1,0 +1,16 @@
+/* Tailwind base layers */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base typography - applied globally */
+@layer base {
+  body {
+    @apply bg-white text-ink font-sans antialiased;
+  }
+
+  /* Smooth focus outlines for keyboard navigation */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-blue-500;
+  }
+}

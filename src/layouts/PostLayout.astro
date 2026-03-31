@@ -1,0 +1,41 @@
+---
+// PostLayout - wraps BaseLayout and adds the typography styles for Markdown content.
+// Used by individual tech posts and personal blog posts.
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  date: Date;
+}
+
+const { title, description, date } = Astro.props;
+
+// Format the date as "March 25, 2026"
+const formattedDate = date.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<BaseLayout title={title} description={description}>
+  <article>
+    <!-- Post header: title and date -->
+    <header class="mb-10">
+      <h1 class="text-2xl font-semibold text-ink mb-2">{title}</h1>
+      <time class="text-sm text-gray-400" datetime={date.toISOString()}>
+        {formattedDate}
+      </time>
+    </header>
+
+    <!--
+      prose class comes from @tailwindcss/typography.
+      It applies clean, readable styles to raw HTML rendered from Markdown:
+      sensible line height, heading sizes, link styling, code blocks, etc.
+    -->
+    <div class="prose prose-gray max-w-none">
+      <slot />
+    </div>
+  </article>
+</BaseLayout>

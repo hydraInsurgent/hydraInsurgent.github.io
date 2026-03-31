@@ -9,6 +9,9 @@ LESSONS.md
 node_modules/
 dist/
 
+# Astro generated types
+.astro/
+
 # Environment
 .env
 .env.*

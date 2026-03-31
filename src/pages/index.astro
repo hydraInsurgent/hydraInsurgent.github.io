@@ -1,0 +1,41 @@
+---
+// Homepage - a brief intro and navigation to all sections.
+// Deliberately minimal: name, one-line bio, section links.
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Home">
+  <section>
+    <h1 class="text-2xl font-semibold text-ink mb-3">Manu Dubey</h1>
+    <p class="text-gray-500 text-lg mb-12">
+      Software developer. Writing about technology, ideas, and whatever else is on my mind.
+    </p>
+
+    <!-- Section links - the three main areas of the site -->
+    <nav class="space-y-6">
+      <a href="/tech" class="block group">
+        <div class="flex items-baseline justify-between">
+          <span class="font-medium text-ink group-hover:text-gray-500 transition-colors">Tech</span>
+          <span class="text-sm text-gray-400 group-hover:text-gray-500 transition-colors">→</span>
+        </div>
+        <p class="text-sm text-gray-400 mt-1">Tutorials, notes, and things I've figured out.</p>
+      </a>
+
+      <a href="/blog" class="block group">
+        <div class="flex items-baseline justify-between">
+          <span class="font-medium text-ink group-hover:text-gray-500 transition-colors">Blog</span>
+          <span class="text-sm text-gray-400 group-hover:text-gray-500 transition-colors">→</span>
+        </div>
+        <p class="text-sm text-gray-400 mt-1">Writing, ideas, and thinking out loud.</p>
+      </a>
+
+      <a href="/projects" class="block group">
+        <div class="flex items-baseline justify-between">
+          <span class="font-medium text-ink group-hover:text-gray-500 transition-colors">Projects</span>
+          <span class="text-sm text-gray-400 group-hover:text-gray-500 transition-colors">→</span>
+        </div>
+        <p class="text-sm text-gray-400 mt-1">Things I've built.</p>
+      </a>
+    </nav>
+  </section>
+</BaseLayout>
