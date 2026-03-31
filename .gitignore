@@ -1,0 +1,18 @@
+# Claude Code config
+.claude/
+.plib-lock.json
+CLAUDE.md
+LESSONS.md
+
+
+# Node
+node_modules/
+dist/
+
+# Environment
+.env
+.env.*
+
+# OS files
+.DS_Store
+Thumbs.db
