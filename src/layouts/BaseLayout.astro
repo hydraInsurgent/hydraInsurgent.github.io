@@ -1,6 +1,9 @@
 ---
 // BaseLayout - the shared HTML shell for every page on the site.
 // Accepts a title prop to set the <title> tag per page.
+// CSS is imported here so Astro/Vite can process and bundle it into the build output.
+import '../styles/global.css';
+
 interface Props {
   title: string;
   description?: string;
@@ -27,8 +30,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
     <title>{title} — Manu Dubey</title>
 
-    <!-- Global styles (Tailwind + base resets) -->
-    <link rel="stylesheet" href="/src/styles/global.css" />
   </head>
 
   <body class="min-h-screen flex flex-col">
