@@ -2,6 +2,7 @@
 title: "manudubey.in"
 description: "This site. Built with Astro and Tailwind CSS, deployed to GitHub Pages."
 url: "https://github.com/hydraInsurgent/hydraInsurgent.github.io"
+date: 2026-03-01
 ---
 
 A minimal personal website and blog. The goal was to build something simple from scratch and understand every part of it - no templates, just the pieces I chose.

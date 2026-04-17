@@ -1,0 +1,87 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Manu Dubey - writing, projects, and thinking.' } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const pathname = Astro.url.pathname;
+
+const navItems = [
+  { href: '/tech', label: 'Tech' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/projects', label: 'Projects' },
+];
+
+const isActive = (href: string) => pathname === href || pathname.startsWith(`${href}/`);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title} - Manu Dubey</title>
+  </head>
+
+  <body class="site-shell min-h-screen flex flex-col">
+    <div class="hero-orbit fixed left-[-8rem] top-20 h-56 w-56 bg-coral/20"></div>
+    <div class="hero-orbit fixed right-[-7rem] top-64 h-72 w-72 bg-teal/20"></div>
+
+    <header class="page-frame pt-5 sm:pt-8">
+      <nav class="glass-panel flex flex-col gap-4 px-5 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+        <a href="/" class="inline-flex items-center gap-3">
+          <span class="flex h-11 w-11 items-center justify-center rounded-2xl bg-ink text-sm font-semibold text-white">
+            MD
+          </span>
+          <span>
+            <span class="block font-display text-xl leading-none">Manu Dubey</span>
+            <span class="mt-1 block text-sm text-slate-500">Building, writing, and sharing in public.</span>
+          </span>
+        </a>
+
+        <ul class="flex flex-wrap gap-2">
+          {navItems.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                class:list={['nav-link', { 'nav-link-active': isActive(item.href) }]}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </header>
+
+    <main class="page-frame flex-1 py-8 sm:py-12">
+      <slot />
+    </main>
+
+    <footer class="page-frame pb-8 pt-4 sm:pb-12">
+      <div class="glass-panel flex flex-col gap-4 px-5 py-5 text-sm text-slate-600 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+        <div>
+          <p class="font-medium text-ink">manudubey.in</p>
+          <p>Designed as a warmer editorial home for essays, notes, and projects.</p>
+        </div>
+
+        <div class="flex flex-wrap gap-3">
+          <a class="nav-link !px-3 !py-1.5" href="https://github.com/hydraInsurgent" target="_blank" rel="noreferrer">
+            GitHub
+          </a>
+          <a class="nav-link !px-3 !py-1.5" href="/projects">
+            Featured work
+          </a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

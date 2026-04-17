@@ -1,40 +1,45 @@
 ---
-// Projects listing page.
-// Projects link out externally - no individual project pages in v1.
 import { getCollection } from 'astro:content';
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteLayout from '../../layouts/SiteLayout.astro';
 
-// Projects have no date so we just display them in filesystem order
-const projects = await getCollection('projects');
+const projects = (await getCollection('projects')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
-<BaseLayout title="Projects" description="Things I've built.">
-  <header class="mb-10">
-    <h1 class="text-2xl font-semibold text-ink mb-2">Projects</h1>
-    <p class="text-gray-400 text-sm">Things I've built.</p>
+<SiteLayout title="Projects" description="Things I've built.">
+  <header class="glass-panel p-7 sm:p-10">
+    <span class="eyebrow">Projects</span>
+    <div class="section-heading mt-6">
+      <div>
+        <h1 class="section-title">Things I've built.</h1>
+        <p class="section-copy mt-4">
+          A curated view of work that deserves a public home, from the site itself to the next experiments taking shape.
+        </p>
+      </div>
+      <p class="text-sm font-medium uppercase tracking-[0.2em] text-slate-400">{projects.length} entries</p>
+    </div>
   </header>
 
-  <ul class="space-y-8">
+  <ul class="mt-8 grid gap-5 md:grid-cols-2">
     {projects.map((project) => (
-      <li>
+      <li class="min-w-0">
         <a
           href={project.data.url}
           target="_blank"
           rel="noopener noreferrer"
-          class="group block"
+          class="content-card block h-full"
         >
-          <div class="flex items-baseline justify-between">
-            <h2 class="font-medium text-ink group-hover:text-gray-500 transition-colors">
-              {project.data.title}
-            </h2>
-            <!-- External link indicator -->
-            <span class="text-xs text-gray-300 group-hover:text-gray-400 transition-colors ml-2 shrink-0">
-              ↗
+          <div class="flex items-start justify-between gap-4 overflow-hidden">
+            <div class="min-w-0">
+              <p class="meta-kicker">Project</p>
+              <h2 class="mt-4 text-3xl">{project.data.title}</h2>
+            </div>
+            <span class="shrink-0 rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
+              External
             </span>
           </div>
-          <p class="text-sm text-gray-400 mt-1">{project.data.description}</p>
+          <p class="mt-3 text-sm text-slate-600">{project.data.description}</p>
         </a>
       </li>
     ))}
   </ul>
-</BaseLayout>
+</SiteLayout>

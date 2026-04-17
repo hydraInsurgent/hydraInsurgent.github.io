@@ -28,6 +28,7 @@ const projects = defineCollection({
     title: z.string(),
     description: z.string(),
     url: z.string().url(),
+    date: z.coerce.date(),
   }),
 });
 

@@ -1,41 +1,137 @@
 ---
-// Homepage - a brief intro and navigation to all sections.
-// Deliberately minimal: name, one-line bio, section links.
-import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import SiteLayout from '../layouts/SiteLayout.astro';
+
+const [techPosts, blogPosts, projects] = await Promise.all([
+  getCollection('tech'),
+  getCollection('blog'),
+  getCollection('projects'),
+]);
+
+const latestTech = [...techPosts].sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()).slice(0, 2);
+const latestBlog = [...blogPosts].sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()).slice(0, 2);
+const featuredProjects = [...projects].sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()).slice(0, 2);
 ---
 
-<BaseLayout title="Home">
-  <section>
-    <h1 class="text-2xl font-semibold text-ink mb-3">Manu Dubey</h1>
-    <p class="text-gray-500 text-lg mb-12">
-      Software developer. Writing about technology, ideas, and whatever else is on my mind.
-    </p>
+<SiteLayout title="Home" description="Software developer writing about technology, ideas, and work in progress.">
+  <section class="grid gap-6 lg:grid-cols-[1.35fr_0.9fr]">
+    <div class="glass-panel relative overflow-hidden p-7 sm:p-10">
+      <div class="absolute right-0 top-0 h-32 w-32 rounded-full bg-coral/15 blur-3xl"></div>
+      <span class="eyebrow animate-fade-up">Building in public</span>
+      <h1 class="mt-6 max-w-3xl animate-fade-up text-5xl leading-tight sm:text-6xl">
+        A home for code, notes, and the things I am building next.
+      </h1>
+      <p class="mt-6 max-w-2xl animate-fade-up text-lg text-slate-600 [animation-delay:120ms]">
+        I am Manu Dubey, a software developer sharing experiments, technical notes, and projects in public.
+        This space is meant to feel closer to a studio journal than a plain list.</p>
 
-    <!-- Section links - the three main areas of the site -->
-    <nav class="space-y-6">
-      <a href="/tech" class="block group">
-        <div class="flex items-baseline justify-between">
-          <span class="font-medium text-ink group-hover:text-gray-500 transition-colors">Tech</span>
-          <span class="text-sm text-gray-400 group-hover:text-gray-500 transition-colors">→</span>
-        </div>
-        <p class="text-sm text-gray-400 mt-1">Tutorials, notes, and things I've figured out.</p>
-      </a>
+      <div class="mt-8 flex flex-wrap gap-3 [animation-delay:220ms] animate-fade-up">
+        <a class="nav-link nav-link-active" href="/projects">See featured work</a>
+        <a class="nav-link bg-white/80" href="/tech">Read technical notes</a>
+      </div>
+    </div>
 
-      <a href="/blog" class="block group">
-        <div class="flex items-baseline justify-between">
-          <span class="font-medium text-ink group-hover:text-gray-500 transition-colors">Blog</span>
-          <span class="text-sm text-gray-400 group-hover:text-gray-500 transition-colors">→</span>
+    <aside class="glass-panel flex flex-col justify-between p-7 sm:p-8">
+      <div>
+        <p class="meta-kicker">What lives here</p>
+        <div class="mt-5 space-y-5">
+          <div>
+            <h2 class="text-2xl">Tech</h2>
+            <p class="mt-2 text-sm text-slate-600">Tutorials, dev notes, and build logs that are useful to come back to.</p>
+          </div>
+          <div>
+            <h2 class="text-2xl">Blog</h2>
+            <p class="mt-2 text-sm text-slate-600">Thoughts in progress, reflections, and longer-form writing.</p>
+          </div>
+          <div>
+            <h2 class="text-2xl">Projects</h2>
+            <p class="mt-2 text-sm text-slate-600">A growing collection of things I have shipped, explored, or prototyped.</p>
+          </div>
         </div>
-        <p class="text-sm text-gray-400 mt-1">Writing, ideas, and thinking out loud.</p>
-      </a>
+      </div>
 
-      <a href="/projects" class="block group">
-        <div class="flex items-baseline justify-between">
-          <span class="font-medium text-ink group-hover:text-gray-500 transition-colors">Projects</span>
-          <span class="text-sm text-gray-400 group-hover:text-gray-500 transition-colors">→</span>
-        </div>
-        <p class="text-sm text-gray-400 mt-1">Things I've built.</p>
-      </a>
-    </nav>
+      <div class="mt-10 rounded-[24px] bg-ink px-5 py-4 text-white">
+        <p class="meta-kicker !text-white/60">Current direction</p>
+        <p class="mt-2 text-sm leading-6 text-white/80">
+          Working on backend systems, AI experiments, and sharing the process in public.
+        </p>
+      </div>
+    </aside>
   </section>
-</BaseLayout>
+
+  <section class="mt-8 grid gap-6 lg:grid-cols-3">
+    <a href="/tech" class="content-card">
+      <p class="meta-kicker">Tech</p>
+      <h2 class="mt-4 text-3xl">Useful notes and walkthroughs</h2>
+      <p class="mt-3 text-sm text-slate-600">The practical side of the site: things I learned, fixed, or finally understood.</p>
+      <span class="mt-8 inline-flex text-sm font-medium text-teal">Open section</span>
+    </a>
+
+    <a href="/blog" class="content-card">
+      <p class="meta-kicker">Blog</p>
+      <h2 class="mt-4 text-3xl">Ideas with some room to breathe</h2>
+      <p class="mt-3 text-sm text-slate-600">Less polished, more personal writing that shows the thinking behind the work.</p>
+      <span class="mt-8 inline-flex text-sm font-medium text-teal">Browse essays</span>
+    </a>
+
+    <a href="/projects" class="content-card">
+      <p class="meta-kicker">Projects</p>
+      <h2 class="mt-4 text-3xl">Things I have made and shipped</h2>
+      <p class="mt-3 text-sm text-slate-600">A portfolio view of the experiments, builds, and public work I want to keep improving.</p>
+      <span class="mt-8 inline-flex text-sm font-medium text-teal">View projects</span>
+    </a>
+  </section>
+
+  <section class="mt-12 grid gap-6 xl:grid-cols-[1fr_1fr_0.9fr]">
+    <div class="glass-panel p-7 sm:p-8">
+      <div class="section-heading">
+        <div>
+          <p class="meta-kicker">Latest tech</p>
+          <h2 class="section-title mt-3 text-3xl">Recent technical writing</h2>
+        </div>
+        <a href="/tech" class="shrink-0 whitespace-nowrap text-sm font-medium text-teal">See all</a>
+      </div>
+
+      <div class="mt-8 space-y-4">
+        {latestTech.map((post) => (
+          <a href={`/tech/${post.id}`} class="content-card block !p-5">
+            <h3 class="text-2xl">{post.data.title}</h3>
+            <p class="mt-2 text-sm text-slate-600">{post.data.description}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <div class="glass-panel p-7 sm:p-8">
+      <div class="section-heading">
+        <div>
+          <p class="meta-kicker">Latest blog</p>
+          <h2 class="section-title mt-3 text-3xl">Essays and reflections</h2>
+        </div>
+        <a href="/blog" class="shrink-0 whitespace-nowrap text-sm font-medium text-teal">See all</a>
+      </div>
+
+      <div class="mt-8 space-y-4">
+        {latestBlog.map((post) => (
+          <a href={`/blog/${post.id}`} class="content-card block !p-5">
+            <h3 class="text-2xl">{post.data.title}</h3>
+            <p class="mt-2 text-sm text-slate-600">{post.data.description}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <div class="glass-panel p-7 sm:p-8">
+      <p class="meta-kicker">Featured projects</p>
+      <h2 class="section-title mt-3 text-3xl">Work worth sharing</h2>
+      <div class="mt-8 space-y-4">
+        {featuredProjects.map((project) => (
+          <a href={project.data.url} target="_blank" rel="noreferrer" class="content-card block !p-5">
+            <h3 class="text-2xl">{project.data.title}</h3>
+            <p class="mt-2 text-sm text-slate-600">{project.data.description}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</SiteLayout>

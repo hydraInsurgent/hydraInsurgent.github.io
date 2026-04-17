@@ -1,12 +1,9 @@
 ---
-// Individual tech post page.
-// Astro uses getStaticPaths() to pre-generate one page per post at build time.
 import { getCollection, render } from 'astro:content';
-import PostLayout from '../../layouts/PostLayout.astro';
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('tech');
-  // Return one path object per post - Astro generates a page for each
   return posts.map((post) => ({
     params: { slug: post.id },
     props: { post },
@@ -14,15 +11,13 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
-
-// render() converts the Markdown body into HTML and provides the <Content> component
 const { Content } = await render(post);
 ---
 
-<PostLayout
+<ArticleLayout
   title={post.data.title}
   description={post.data.description}
   date={post.data.date}
 >
   <Content />
-</PostLayout>
+</ArticleLayout>

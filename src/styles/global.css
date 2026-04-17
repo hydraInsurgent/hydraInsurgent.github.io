@@ -1,16 +1,124 @@
-/* Tailwind base layers */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Base typography - applied globally */
 @layer base {
-  body {
-    @apply bg-white text-ink font-sans antialiased;
+  :root {
+    color-scheme: light;
   }
 
-  /* Smooth focus outlines for keyboard navigation */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-paper text-ink font-sans antialiased;
+    background-image:
+      radial-gradient(circle at top left, rgba(255, 122, 89, 0.18), transparent 34%),
+      radial-gradient(circle at 85% 12%, rgba(31, 122, 140, 0.18), transparent 26%),
+      linear-gradient(180deg, #fbf6ed 0%, #f6efe2 100%);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display tracking-tight text-ink;
+  }
+
+  p {
+    @apply leading-7 text-slate-700;
+  }
+
+  a {
+    @apply transition duration-200;
+  }
+
   :focus-visible {
-    @apply outline-2 outline-offset-2 outline-blue-500;
+    @apply outline-2 outline-offset-4 outline-coral;
+  }
+}
+
+@layer components {
+  .site-shell {
+    @apply relative overflow-x-hidden;
+  }
+
+  .site-shell::before {
+    content: '';
+    @apply pointer-events-none fixed inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-coral/50 to-transparent;
+  }
+
+  .page-frame {
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .glass-panel {
+    @apply rounded-[28px] border border-white/70 bg-white/75 shadow-glow backdrop-blur;
+  }
+
+  .nav-link {
+    @apply rounded-full px-4 py-2 text-sm font-medium text-slate-600 hover:bg-white/80 hover:text-ink;
+  }
+
+  .nav-link-active {
+    @apply bg-ink text-white hover:bg-ink hover:text-white;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full border border-pine/10 bg-white/80 px-3 py-1 text-[0.7rem] font-semibold uppercase tracking-[0.24em] text-teal;
+  }
+
+  .section-heading {
+    @apply flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between;
+  }
+
+  .section-title {
+    @apply text-3xl sm:text-4xl;
+  }
+
+  .section-copy {
+    @apply max-w-2xl text-sm sm:text-base text-slate-600;
+  }
+
+  .content-card {
+    @apply glass-panel relative h-full overflow-hidden p-6 sm:p-7;
+  }
+
+  .content-card::after {
+    content: '';
+    @apply pointer-events-none absolute inset-x-6 bottom-0 h-px bg-gradient-to-r from-coral/0 via-coral/40 to-coral/0 opacity-0 transition duration-300;
+  }
+
+  .content-card:hover::after {
+    @apply opacity-100;
+  }
+
+  .meta-kicker {
+    @apply text-xs font-semibold uppercase tracking-[0.24em] text-slate-400;
+  }
+
+  .prose {
+    --tw-prose-body: rgb(71 85 105);
+    --tw-prose-headings: rgb(23 32 51);
+    --tw-prose-links: rgb(16 63 74);
+    --tw-prose-bold: rgb(23 32 51);
+    --tw-prose-code: rgb(23 32 51);
+    --tw-prose-quotes: rgb(23 32 51);
+    --tw-prose-counters: rgb(100 116 139);
+    --tw-prose-bullets: rgb(255 122 89);
+    --tw-prose-hr: rgb(226 232 240);
+    --tw-prose-captions: rgb(100 116 139);
+    --tw-prose-th-borders: rgb(203 213 225);
+    --tw-prose-td-borders: rgb(226 232 240);
+    @apply prose-lg prose-slate;
+  }
+
+  .prose :where(code):not(:where(pre code)) {
+    @apply rounded-md bg-slate-100 px-1.5 py-0.5;
+  }
+
+  .hero-orbit {
+    @apply absolute rounded-full blur-3xl;
   }
 }

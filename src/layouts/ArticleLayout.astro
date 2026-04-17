@@ -1,0 +1,34 @@
+---
+import SiteLayout from './SiteLayout.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  date: Date;
+}
+
+const { title, description, date } = Astro.props;
+
+const formattedDate = date.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<SiteLayout title={title} description={description}>
+  <article class="glass-panel overflow-hidden p-7 sm:p-10">
+    <header class="mb-10 border-b border-slate-200/80 pb-8">
+      <span class="eyebrow mb-5">Field notes</span>
+      <h1 class="max-w-3xl text-4xl sm:text-5xl">{title}</h1>
+      <p class="mt-4 max-w-2xl text-base text-slate-600">{description}</p>
+      <time class="mt-6 block text-sm font-medium uppercase tracking-[0.18em] text-slate-400" datetime={date.toISOString()}>
+        {formattedDate}
+      </time>
+    </header>
+
+    <div class="prose max-w-none">
+      <slot />
+    </div>
+  </article>
+</SiteLayout>

@@ -1,7 +1,6 @@
 ---
-// Individual personal blog post page.
 import { getCollection, render } from 'astro:content';
-import PostLayout from '../../layouts/PostLayout.astro';
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -15,10 +14,10 @@ const { post } = Astro.props;
 const { Content } = await render(post);
 ---
 
-<PostLayout
+<ArticleLayout
   title={post.data.title}
   description={post.data.description}
   date={post.data.date}
 >
   <Content />
-</PostLayout>
+</ArticleLayout>
