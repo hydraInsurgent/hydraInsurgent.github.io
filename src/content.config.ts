@@ -21,13 +21,14 @@ const blog = defineCollection({
   schema: postSchema,
 });
 
-// Projects: title, one-line description, and an external URL
+// Projects: title, one-line description, GitHub URL, and optional live demo URL
 const projects = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/projects' }),
   schema: z.object({
     title: z.string(),
     description: z.string(),
     url: z.string().url(),
+    liveDemo: z.string().url().optional(),
     date: z.coerce.date(),
   }),
 });

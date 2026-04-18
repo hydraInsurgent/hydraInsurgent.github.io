@@ -126,10 +126,37 @@ const featuredProjects = [...projects].sort((a, b) => b.data.date.valueOf() - a.
       <h2 class="section-title mt-3 text-3xl">Work worth sharing</h2>
       <div class="mt-8 space-y-4">
         {featuredProjects.map((project) => (
-          <a href={project.data.url} target="_blank" rel="noreferrer" class="content-card block !p-5">
+          <div class="content-card relative !p-5">
+            <a
+              href={project.data.liveDemo ?? project.data.url}
+              target="_blank"
+              rel="noreferrer"
+              class="absolute inset-0 rounded-[28px]"
+              aria-label={project.data.title}
+            ></a>
             <h3 class="text-2xl">{project.data.title}</h3>
             <p class="mt-2 text-sm text-slate-600">{project.data.description}</p>
-          </a>
+            <div class="relative z-10 mt-4 flex items-center justify-between">
+              <a
+                href={project.data.url}
+                target="_blank"
+                rel="noreferrer"
+                class="nav-link bg-white/80 text-sm"
+              >
+                GitHub
+              </a>
+              {project.data.liveDemo && (
+                <a
+                  href={project.data.liveDemo}
+                  target="_blank"
+                  rel="noreferrer"
+                  class="nav-link nav-link-active text-sm"
+                >
+                  Live Demo
+                </a>
+              )}
+            </div>
+          </div>
         ))}
       </div>
     </div>
