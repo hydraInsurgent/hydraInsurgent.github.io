@@ -5,9 +5,10 @@ interface Props {
   title: string;
   description: string;
   date: Date;
+  ogImage?: string;
 }
 
-const { title, description, date } = Astro.props;
+const { title, description, date, ogImage } = Astro.props;
 
 const formattedDate = date.toLocaleDateString('en-US', {
   year: 'numeric',
@@ -16,7 +17,7 @@ const formattedDate = date.toLocaleDateString('en-US', {
 });
 ---
 
-<SiteLayout title={title} description={description}>
+<SiteLayout title={title} description={description} ogImage={ogImage}>
   <article class="glass-panel overflow-hidden p-7 sm:p-10">
     <header class="mb-10 border-b border-slate-200/80 pb-8">
       <span class="eyebrow mb-5">Field notes</span>

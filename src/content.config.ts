@@ -7,6 +7,7 @@ const postSchema = z.object({
   title: z.string(),
   date: z.coerce.date(), // coerce accepts both Date objects and date strings
   description: z.string(),
+  ogImage: z.string().optional(),
 });
 
 // Tech blog: tutorials, dev notes, learnings

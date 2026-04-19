@@ -2,6 +2,7 @@
 title: "When a Price Change Made Me Build My Own To-Do App"
 date: 2026-04-12
 description: "A personal story about how a Todo app price hike made me question my tool dependencies and build something simpler on my own terms."
+ogImage: "/images/tech/when-a-price-change-made-me-build-my-own-todo-app/Tasklog-desktop-home.png"
 ---
 
 **In January 2026, my to-do app subscription jumped from ₹220/month to ₹660/month.**
@@ -205,7 +206,7 @@ And more importantly, it's mine.
 
 If you're curious what that looks like in practice:
 
-[Tasklog on GitHub](https://github.com/hydraInsurgent/Tasklog)
+[Try Tasklog live](https://tasklog.manudubey.in/) · [View on GitHub](https://github.com/hydraInsurgent/Tasklog)
 
 You might not need to build your own tool but it might make you rethink the ones you depend on.
 

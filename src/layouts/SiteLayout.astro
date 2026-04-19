@@ -4,12 +4,14 @@ import '../styles/global.css';
 interface Props {
   title: string;
   description?: string;
+  ogImage?: string;
 }
 
-const { title, description = 'Manu Dubey - writing, projects, and thinking.' } = Astro.props;
+const { title, description = 'Manu Dubey - writing, projects, and thinking.', ogImage } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const pathname = Astro.url.pathname;
+const ogImageURL = ogImage ? new URL(ogImage, Astro.site).toString() : undefined;
 
 const navItems = [
   { href: '/tech', label: 'Tech' },
@@ -29,6 +31,19 @@ const isActive = (href: string) => pathname === href || pathname.startsWith(`${h
     <link rel="canonical" href={canonicalURL} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title} - Manu Dubey</title>
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={`${title} - Manu Dubey`} />
+    <meta property="og:description" content={description} />
+    {ogImageURL && <meta property="og:image" content={ogImageURL} />}
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content={ogImageURL ? 'summary_large_image' : 'summary'} />
+    <meta name="twitter:title" content={`${title} - Manu Dubey`} />
+    <meta name="twitter:description" content={description} />
+    {ogImageURL && <meta name="twitter:image" content={ogImageURL} />}
   </head>
 
   <body class="site-shell min-h-screen flex flex-col">
