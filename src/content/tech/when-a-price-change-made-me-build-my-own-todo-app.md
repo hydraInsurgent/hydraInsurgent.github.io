@@ -3,6 +3,7 @@ title: "When a Price Change Made Me Build My Own To-Do App"
 date: 2026-04-12
 description: "A personal story about how a Todo app price hike made me question my tool dependencies and build something simpler on my own terms."
 ogImage: "/images/tech/when-a-price-change-made-me-build-my-own-todo-app/Tasklog-desktop-home.png"
+liveDemo: "https://tasklog.manudubey.in/"
 ---
 
 **In January 2026, my to-do app subscription jumped from ₹220/month to ₹660/month.**
