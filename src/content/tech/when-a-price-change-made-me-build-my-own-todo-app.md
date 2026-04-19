@@ -2,7 +2,7 @@
 title: "When a Price Change Made Me Build My Own To-Do App"
 date: 2026-04-12
 description: "A personal story about how a Todo app price hike made me question my tool dependencies and build something simpler on my own terms."
-ogImage: "/images/tech/when-a-price-change-made-me-build-my-own-todo-app/Tasklog-desktop-home.png"
+ogImage: "/images/tech/when-a-price-change-made-me-build-my-own-todo-app/Tasklog-desktop-home-v2.png"
 liveDemo: "https://tasklog.manudubey.in/"
 ---
 
@@ -153,7 +153,7 @@ What had started as a rough experiment began to feel more usable.
 
 Not perfect, but real progress.
 
-![Tasklog desktop — the finished task list view](/images/tech/when-a-price-change-made-me-build-my-own-todo-app/Tasklog-desktop-home.png)
+![Tasklog desktop — the finished task list view](/images/tech/when-a-price-change-made-me-build-my-own-todo-app/Tasklog-desktop-home-v2.png)
 
 ---
 
