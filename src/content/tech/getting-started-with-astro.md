@@ -1,5 +1,6 @@
 ---
 title: "Getting Started with Astro"
+status: published
 date: 2026-03-20
 description: "A quick look at why Astro is a solid choice for building static sites and how to get up and running."
 ---

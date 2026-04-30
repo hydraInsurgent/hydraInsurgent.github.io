@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 import SiteLayout from '../../layouts/SiteLayout.astro';
 
-const posts = (await getCollection('tech')).sort(
+const posts = (await getCollection('tech', ({ data }) => import.meta.env.DEV || data.status === 'published')).sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
 );
 ---

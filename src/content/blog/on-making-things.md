@@ -1,5 +1,6 @@
 ---
 title: "On Making Things"
+status: published
 date: 2026-03-22
 description: "There is something about finishing something small that feels different from anything else."
 ---

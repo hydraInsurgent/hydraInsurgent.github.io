@@ -1,5 +1,6 @@
 ---
 title: "Why I Use Tailwind CSS"
+status: published
 date: 2026-03-25
 description: "Tailwind gets a lot of opinions. Here is why it works well for small, solo-built sites."
 ---

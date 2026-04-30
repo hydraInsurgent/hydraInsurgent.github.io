@@ -1,5 +1,6 @@
 ---
 title: "Learning in Public"
+status: published
 date: 2026-03-28
 description: "Notes on the strange, slightly uncomfortable practice of sharing work before it's ready."
 ---
