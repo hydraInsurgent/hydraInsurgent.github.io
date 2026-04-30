@@ -1,5 +1,6 @@
 ---
 title: "When a Price Change Made Me Build My Own To-Do App"
+status: published
 date: 2026-04-12
 description: "A personal story about how a Todo app price hike made me question my tool dependencies and build something simpler on my own terms."
 ogImage: "/images/tech/when-a-price-change-made-me-build-my-own-todo-app/Tasklog-desktop-home-v2.png"
@@ -199,7 +200,7 @@ The result is simpler. It's not perfect. But it does exactly what I need.
 
 And more importantly, it's mine.
 
-<img src="/images/tech/when-a-price-change-made-me-build-my-own-todo-app/Tasklog-mobile-home.jpeg" alt="Tasklog on mobile" style="max-width: 360px; display: block; margin: 0 auto;" />
+<img src="/images/tech/when-a-price-change-made-me-build-my-own-todo-app/Tasklog-mobile-home.jpeg" alt="Tasklog on mobile" style="max-width: min(360px, 100%); display: block; margin: 0 auto;" />
 
 ---
 
