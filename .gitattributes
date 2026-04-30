@@ -1,0 +1,21 @@
+# Normalize all text files to LF on checkout and in the repo.
+# Added 2026-04-30 during Windows → Linux migration.
+* text=auto eol=lf
+
+# Windows-only scripts keep CRLF (none today, but reserved).
+*.ps1 text eol=crlf
+*.cmd text eol=crlf
+*.bat text eol=crlf
+
+# Binary assets — never touch.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.otf binary
+*.pdf binary
