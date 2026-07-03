@@ -1,0 +1,73 @@
+---
+import { getCollection, render } from 'astro:content';
+import SiteLayout from '../../layouts/SiteLayout.astro';
+
+export async function getStaticPaths() {
+  if (!import.meta.env.DEV) return [];
+
+  const drafts = await getCollection('drafts');
+  const sorted = drafts.sort((a, b) => {
+    const aDate = a.data.date?.valueOf() ?? 0;
+    const bDate = b.data.date?.valueOf() ?? 0;
+    return bDate - aDate;
+  });
+
+  return [
+    { params: { path: undefined }, props: { draft: null, drafts: sorted } },
+    ...sorted.map((draft) => ({
+      params: { path: draft.id },
+      props: { draft, drafts: sorted },
+    })),
+  ];
+}
+
+const { draft, drafts } = Astro.props;
+const Content = draft ? (await render(draft)).Content : null;
+
+const kindLabel: Record<string, string> = {
+  tech: 'Tech',
+  blog: 'Blog',
+  linkedin: 'LinkedIn',
+};
+---
+
+{draft ? (
+  <SiteLayout title={`[DRAFT] ${draft.data.title ?? draft.id}`} description={draft.data.description ?? 'Draft preview'}>
+    <article class="glass-panel overflow-hidden p-7 sm:p-10">
+      <header class="mb-10 border-b border-slate-200/80 pb-8">
+        <span class="eyebrow mb-5">Draft · {kindLabel[draft.data.kind] ?? draft.data.kind}</span>
+        <h1 class="max-w-3xl text-4xl sm:text-5xl">{draft.data.title ?? draft.id}</h1>
+        {draft.data.description && <p class="mt-4 max-w-2xl text-base text-slate-600">{draft.data.description}</p>}
+        <p class="mt-6 text-xs font-medium uppercase tracking-[0.2em] text-amber-600">
+          Local preview only — not in production build
+        </p>
+      </header>
+
+      <div class="prose max-w-none">
+        <Content />
+      </div>
+    </article>
+  </SiteLayout>
+) : (
+  <SiteLayout title="Drafts" description="Local-only drafts preview.">
+    <header class="glass-panel p-7 sm:p-10">
+      <span class="eyebrow">Drafts</span>
+      <h1 class="section-title mt-6">Work in progress.</h1>
+      <p class="section-copy mt-4">
+        Drafts for any category. This page is only generated in <code>astro dev</code>; production builds emit nothing under <code>/drafts</code>.
+      </p>
+    </header>
+
+    <ul class="mt-8 grid gap-5">
+      {drafts.map((d) => (
+        <li>
+          <a href={`/drafts/${d.id}`} class="content-card block">
+            <p class="meta-kicker">{kindLabel[d.data.kind] ?? d.data.kind}</p>
+            <h2 class="mt-4 text-3xl">{d.data.title ?? d.id}</h2>
+            {d.data.description && <p class="mt-3 text-sm text-slate-600">{d.data.description}</p>}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </SiteLayout>
+)}

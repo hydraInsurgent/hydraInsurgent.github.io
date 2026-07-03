@@ -31,13 +31,19 @@ const projects = defineCollection({
   }),
 });
 
-const linkedin = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/linkedin' }),
+const drafts = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/drafts' }),
   schema: z.object({
-    status: z.enum(['draft', 'posted']),
+    kind: z.enum(['tech', 'blog', 'linkedin']),
+    title: z.string().optional(),
+    description: z.string().optional(),
+    date: z.coerce.date().optional(),
     article: z.string().optional(),
+    status: z.enum(['draft', 'posted']).optional(),
     postedDate: z.coerce.date().optional(),
+    ogImage: z.string().optional(),
+    liveDemo: z.string().url().optional(),
   }),
 });
 
-export const collections = { tech, blog, projects, linkedin };
+export const collections = { tech, blog, projects, drafts };

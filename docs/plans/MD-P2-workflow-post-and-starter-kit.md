@@ -48,11 +48,12 @@ This file is the working brief. Update it as thinking evolves. Open questions li
 
 ## Critical Decisions
 
-- **Frame: workflow as the lead.** Not AI hype. The post argues that the workflow was the unlock, not the model.
+- **Frame: the result is the lead, not the method or its origin.** The protagonist is TaskLog's velocity (9 releases, 38 days, real shipped product). The workflow is a supporting factor alongside doc discipline and version cadence. Reject "How I Build with Claude Code" (makes the tool the protagonist) AND "I borrowed this workflow" (undersells the actual work). The scaffold's origin gets a brief, factual mention in the body; no defensiveness either way.
 - **Starter kit = public GitHub template repo.** Not a gated zip. One-click "Use this template." More credible than a gated download and removes infrastructure from the critical path.
 - **Newsletter = Buttondown footer form.** Free tier or $9/mo if needed. No verification, no double-opt-in custom flow, no zip delivery. Defer Listmonk and self-hosting.
-- **One worked example, not a tour.** Pick a single TaskLog feature from the CHANGELOG and walk through it end-to-end. Candidate features below in Open Questions.
-- **Publish kit and post together.** Cross-linking only works if both are live.
+- **One worked example: v2.4 Labels and Filtering.** Most full-stack (DB, API, UI, tests). Best showcase of the workflow producing a real feature end-to-end.
+- **Publish kit and post simultaneously.** Cross-linking only works if both are live. Kit is mechanical work (sanitize + README), so it can land on the same weekend as the post.
+- **`LESSONS.md`: backfill 5 to 10 real lessons before publish.** Don't address the emptiness in the post — fill it in so the kit and the system both feel lived-in. Pull lessons from the actual TaskLog history (rewrite pain, CI fights, hook gaps, etc.).
 
 ---
 
@@ -60,20 +61,8 @@ This file is the working brief. Update it as thinking evolves. Open questions li
 
 Update this list as decisions are made. Move resolved items into Critical Decisions.
 
-- **Title.** Leaning toward something specific to the TaskLog story, not generic. Candidates:
-  - "From v1 to v2.9: The Workflow That Made TaskLog Real"
-  - "How I Build with Claude Code: The TaskLog Workflow"
-  - "Why I Wrote the Workflow Before the Code"
-  - The third option matches the actual git history (the toolkit commit landed before the migration commits) and is the most contrarian.
-- **Worked example feature.** Three candidates from the CHANGELOG:
-  - **v2.4 Labels and Filtering.** Most full-stack (DB, API, UI, tests). Best showcase of the workflow producing a real feature.
-  - **v2.6 Background Auto-Refresh.** Cleaner scope, demonstrates a custom hook pattern, shows how `usePolling` got documented in engineering-guidelines.
-  - **v2.7 CI and Cross-Platform.** Most honest about pain (Mac runner discontinued, hidden `.next` dir bug, missing hook). Best fit for the "what takes time" beat.
-- **`LESSONS.md`.** Currently empty in the TaskLog repo despite the toolkit instructing Claude to update it. Two options:
-  - (a) Backfill 5 to 10 real lessons before the post goes live, then point to it as part of the system.
-  - (b) Address the empty file in the post itself as an honest beat ("I built a lesson-tracking system and never used it; here's what I think went wrong").
-- **Template repo name.** Candidates: `claude-code-solo-builder-kit`, `solo-dev-claude-kit`, `claude-code-workflow-kit`. Pick something searchable that does not lock to "solo" if teams might use it.
-- **Publish ordering.** Kit first, then post linking to it? Or both at the same time? Both at the same time is cleanest if the cross-links are pre-staged.
+- **Title.** Deferred. Drafting first with a working thesis ("how I shipped 9 releases in 38 days, and what made it possible"); title chosen after the post takes shape. Earlier rejects: "How I Build with Claude Code…" (puts the tool in the lead), "Why I Wrote the Workflow Before the Code" (untrue), "Borrowed a Workflow…" (foregrounds the wrong thing).
+- **Template repo name.** Candidates: `claude-code-workflow-kit`, `solo-shipper-kit`, `claude-code-solo-kit`. Pick something searchable that does not lock to "solo" if teams might use it.
 - **Buttondown tier.** Free tier has limits worth checking. $9/mo Pro may not be needed for v1.
 - **Sanitization scope.** Which TaskLog specifics need to come out of the kit (project name, .NET / Next.js references in `architecture.md`, etc.) vs which stay as illustrative placeholders.
 

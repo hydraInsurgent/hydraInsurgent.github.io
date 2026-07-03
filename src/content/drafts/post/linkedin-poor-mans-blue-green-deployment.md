@@ -1,4 +1,5 @@
 ---
+kind: linkedin
 status: draft
 article: src/content/tech/poor-mans-blue-green-deployment.md
 ---
