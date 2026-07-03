@@ -1,7 +1,7 @@
 ---
 title: "Unit TestCase Generation"
 description: "A tool that uses OpenAI GPT to generate unit test cases and test code from any code snippet or file. Built with React and ASP.NET Core."
-url: "https://github.com/hydraInsurgent/Unit-TestCase-Generation"
+url: "https://github.com/manucompiles/Unit-TestCase-Generation"
 date: 2024-12-04
 ---
 

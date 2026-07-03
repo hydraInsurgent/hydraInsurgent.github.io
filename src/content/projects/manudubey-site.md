@@ -1,7 +1,7 @@
 ---
 title: "manudubey.in"
 description: "This site. Built with Astro and Tailwind CSS, deployed to GitHub Pages."
-url: "https://github.com/hydraInsurgent/hydraInsurgent.github.io"
+url: "https://github.com/manucompiles/manucompiles.github.io"
 date: 2026-03-01
 ---
 

@@ -17,7 +17,7 @@ And when it's done:
 
 I originally wrote this for Windows using PowerShell and built-in `System.Speech`. After moving to Pop!_OS, I rewrote the same flow in Bash using [piper](https://github.com/rhasspy/piper) for TTS. A macOS variant is included too — built on the same shape as the Linux scripts, swapping in macOS's built-in `say` and `afplay`. Pick whichever matches your machine.
 
-> **Heads-up on the macOS section:** I don't have a Mac, so the macOS scripts below are an adaptation of the working Linux setup using macOS-native tools. The wiring is identical and the building blocks (`say`, `afplay`, `osascript`) are all stock macOS — but I haven't run them end-to-end. If you try it and find a rough edge, [open an issue](https://github.com/hydraInsurgent/hydraInsurgent.github.io/issues) and I'll fix it.
+> **Heads-up on the macOS section:** I don't have a Mac, so the macOS scripts below are an adaptation of the working Linux setup using macOS-native tools. The wiring is identical and the building blocks (`say`, `afplay`, `osascript`) are all stock macOS — but I haven't run them end-to-end. If you try it and find a rough edge, [open an issue](https://github.com/manucompiles/manucompiles.github.io/issues) and I'll fix it.
 
 > **Note:** The `Notification` hook only fires in the terminal CLI — it does not fire in the VS Code or other IDE extensions. However, the `PermissionRequest` and `Stop` hooks work in both CLI and IDE. See the [IDE support](#ide-support) section below.
 

@@ -19,7 +19,7 @@ Markdown content --> Content Collections (Zod validation) --> Astro build --> St
 ## Repository Layout
 
 ```
-hydraInsurgent.github.io/
+manucompiles.github.io/
 ├── src/
 │   ├── content/
 │   │   ├── tech/               Tech blog posts (Markdown)

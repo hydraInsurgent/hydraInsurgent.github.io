@@ -208,7 +208,7 @@ And more importantly, it's mine.
 
 If you're curious what that looks like in practice:
 
-[Try Tasklog live](https://tasklog.manudubey.in/) · [View on GitHub](https://github.com/hydraInsurgent/Tasklog)
+[Try Tasklog live](https://tasklog.manudubey.in/) · [View on GitHub](https://github.com/manucompiles/Tasklog)
 
 You might not need to build your own tool but it might make you rethink the ones you depend on.
 

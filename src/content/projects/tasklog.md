@@ -1,7 +1,7 @@
 ---
 title: "Tasklog"
 description: "A personal task manager designed around how I actually work, not around feature lists."
-url: "https://github.com/hydraInsurgent/Tasklog"
+url: "https://github.com/manucompiles/Tasklog"
 liveDemo: "https://tasklog.manudubey.in/"
 date: 2026-04-17
 ---
